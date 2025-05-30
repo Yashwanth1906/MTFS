@@ -1,9 +1,14 @@
-#include "search_worker.h";
+#include "search_worker.h"
 #include <fstream>
 #include <iostream>
+using namespace std;
+#include <string>
+#include <queue>
+#include <mutex>
+#include <regex>
+#include <thread>
 
-
-void seach_worker(queue<string>& files, mutex& mtx, regex& pattern) {
+void search_worker(queue<string>& files, mutex& mtx, regex& pattern) {
    while(true) {
       string filename;
       {

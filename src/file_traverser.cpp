@@ -4,8 +4,8 @@
 namespace fs = filesystem;
 
 void traverse_directory(string &rootdir, queue<string>& files, mutex& mtx) {
-   try{
-      for(auto& entry : fs::recursive_directory_iterator(rootdir)) {
+  try{
+    for(auto& entry : fs::recursive_directory_iterator(rootdir)) {
          if (entry.is_regular_file()) {
             lock_guard<mutex> lock(mtx);
             files.push(entry.path().string());
@@ -13,5 +13,5 @@ void traverse_directory(string &rootdir, queue<string>& files, mutex& mtx) {
       }
    } catch(exception& e) {
       cerr<<"Error traversing directory"<<e.what()<<endl;
-   }
+   }  
 }

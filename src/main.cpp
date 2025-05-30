@@ -21,10 +21,9 @@ int main() {
       cerr<<"Invalid regex pattern "<<e.what()<<endl;
       return 1;
    }
-
    queue<string> q;
    mutex mtx;
-   thread traverser(traverse_directory, directory, ref(q), ref(mtx));
+   thread traverser(traverse_directory, ref(directory), ref(q), ref(mtx));
    traverser.join();
    int no_of_threads = 4;
    vector<thread> workers;

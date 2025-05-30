@@ -1,0 +1,5 @@
+.vscode
+grep_mt
+file_traverser.o
+main.o
+search_worker.o
